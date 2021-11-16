@@ -1,0 +1,12 @@
+<div class='form-group col-8 m-2'>
+  <label for='<%- inputName %>'>
+    <%- inputLabel.charAt(0).toUpperCase() + inputLabel.substring(1) %>
+  </label>
+  <input 
+    type=<%- inputType %> 
+    class='form-control' 
+    id='<%- inputName %>' 
+    name='<%- inputName %>' 
+    placeholder='Enter <%- inputLabel %>'>
+  <small class='input-message form-text text-muted'></small>
+</div>

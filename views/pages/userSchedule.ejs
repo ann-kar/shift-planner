@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <%- include('../partials/head.ejs', {pageTitle: 'Shift Planner: User schedule' }); -%>
+</head>
+
+<body>
+  <% const surname=schedules[0].firstname + ' ' + schedules[0].lastname %>
+  <%- include('../partials/menu.ejs', {header: surname + "'s Shifts" }); -%>
+  <% schedules = schedules.filter(schedule => Object.values(schedule).every(el => el !== null)); %>
+  <% if (schedules.length > 0) { %>
+  <% for (const schedule of schedules.sort((a, b) => a.day - b.day)) { %>
+  <%- include('../partials/schedule.ejs', { 
+                start_at: schedule.start_at, 
+                end_at: schedule.end_at, 
+                day: schedule.day
+            }); %>
+  <% } %>
+  <% } else { %>
+  <h3 class='text-center h5 lh-lg mt-5 p-5'>No shifts planned.</h3>
+  <% } %>
+</body>
+
+</html>

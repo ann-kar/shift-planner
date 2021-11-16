@@ -1,0 +1,11 @@
+<% const daysOfWeek=['Monday', 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday' , 'Saturday' , 'Sunday'] %>
+<div class='card card-border mt-4'>
+  <div class='row mx-4 p-2' style='font-size: 1.2rem'>
+    <div class='col-3'>
+      <%- daysOfWeek[parseInt(day) - 1] %>
+    </div>
+    <div class='col-3'>
+      <%- start_at %> - <%- end_at %>
+    </div>
+  </div>
+</div>

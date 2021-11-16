@@ -1,0 +1,9 @@
+<script>
+  const validateLength = (val, len) => val.length > len;
+  const validateEmail = (email) => /.{1,64}@.{1,255}/.test(email);
+  const validatePassword = (password) => validateLength(password, 11);
+  const isFilled = (input) => validateLength(input.value.trim(), 0);
+  const toggleError = (input, message, isCorrect) => {
+    input.nextElementSibling.innerText = isCorrect ? '' :  message;
+  }
+</script>

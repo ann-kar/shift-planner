@@ -1,0 +1,14 @@
+<script>
+  const scheduleForm = document.querySelector('.schedule-form');
+  scheduleForm.addEventListener('submit', (e) => {
+    let scheduleErrors = false;
+    for (const input of scheduleForm.elements.scheduleFields.elements) {
+      !isFilled(input) ? scheduleErrors = true : null;
+      (input.value === '0') ? scheduleErrors = true: null;
+    }
+    if (scheduleErrors) {
+      e.preventDefault();
+      e.target.querySelector('.form-message').innerText = 'Please fill correctly all the fields.'
+    }
+  })
+</script>

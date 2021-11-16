@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <%- include('../partials/head.ejs', {pageTitle: 'Shift Planner: User schedule' }); -%>
+</head>
+
+<body>
+  <div class='main'>
+    <%- include('../partials/menu.ejs', {header: 'Shift management' }); -%>
+    <div class='card m-4' style='max-width: 600px; margin: 0 auto;'>
+      <h2 class='card-header'>Add shift</h2>
+      <form class='schedule-form d-flex flex-wrap m-3 p-2' action='/schedules-success' method='post'>
+        <fieldset name='scheduleFields'>
+          <div class='row'>
+            <label for='weekday' class='text-grey m-2 col-4'>Day of the week:</label>
+            <select class='select-input col-7 m-2' name='day'>
+              <option value='0'>-- choose weekday --</option>
+              <option value='1'>Monday</option>
+              <option value='2'>Tuesday</option>
+              <option value='3'>Wednesday</option>
+              <option value='4'>Thursday</option>
+              <option value='5'>Friday</option>
+              <option value='6'>Saturday</option>
+              <option value='7'>Sunday</option>
+            </select>
+          </div>
+          <div class='row'>
+            <label class='text-grey col-4 m-2' for='from'>From:</label>
+            <input class='time-input col-7 m-2' type='time' name='from' min='09:00:00' max='20:50:00'>
+          </div>
+          <div class='row'>
+            <label class='text-grey m-2 col-4' for='to'>To:</label>
+            <input class='time-input col-7 m-2' type='time' name='to' min='09:10:00' max='21:00:00'>
+          </div>
+          <div class='row'>
+            <label for='user' class='text-grey m-2 col-4'>Staff member:</label>
+            <select class='select-input col-7 m-2' name='id'>
+              <% const users=[...new Set(schedules.map(el=> el.lastname + ' ' + el.firstname + ' ' + el.id).sort())] %>
+              <option value='0'>-- choose member --</option>
+              <% for (let i=0; i < users.length; i++) { %>
+              <% let user = users[i].split(' ') %>
+              <option value='<%- user.pop() %>'>
+                <%-user.join(' ').trim()%>
+              </option>
+              <% } %>
+            </select>
+          </div>
+        </fieldset>
+        <div class='row d-flex justify-content-center'>
+          <button id='submitScheduleBtn' type='submit' class='btn btn-dark col-2 m-3'>Submit</button>
+          <small class='form-message form-text w-100 text-muted text-center'></small>
+        </div>
+      </form>
+    </div>
+    <% for (let i=0; i < schedules.length; i++) { %>
+    <% if ((Object.values(schedules[i]).every(el => el !== null)) && (i === 0 || schedules[i].day !==schedules[i - 1].day)) { %>
+    <%- include('../partials/weekday.ejs', { day: schedules[i].day }); %>
+    <%- include('../partials/single-shift.ejs', {
+      start_at: schedules[i].start_at, 
+      end_at: schedules[i].end_at,
+      firstname: schedules[i].firstname, 
+      lastname: schedules[i].lastname, 
+      user_id: schedules[i].user_id }); %>
+    <% } else if (Object.values(schedules[i]).every(el => el !== null)) { %>
+    <%- include('../partials/single-shift.ejs', { 
+      start_at: schedules[i].start_at, 
+      end_at:schedules[i].end_at,
+           firstname: schedules[i].firstname, 
+           lastname: schedules[i].lastname, 
+           user_id: schedules[i].user_id }); %>
+    <% } %>
+    <% } %>
+  </div>
+  <%- include('../partials/scripts-forms.ejs') %>
+  <%- include('../partials/scripts-scheduleForm.ejs') %>
+</body>
+
+</html>

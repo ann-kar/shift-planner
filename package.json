@@ -1,0 +1,31 @@
+{
+  "name": "p02-express-db",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pl-incode/exercise-5-mr-coffee---expressjs-db-ann-kar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pl-incode/exercise-5-mr-coffee---expressjs-db-ann-kar/issues"
+  },
+  "homepage": "https://github.com/pl-incode/exercise-5-mr-coffee---expressjs-db-ann-kar#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "nodemon": "^2.0.14"
+  }
+}

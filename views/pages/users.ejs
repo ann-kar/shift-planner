@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <%- include('../partials/head.ejs', {pageTitle: 'Shift Planner: Users' }); -%>
+</head>
+
+<body>
+  <div class='main'>
+  <%- include('../partials/menu.ejs', {header: 'Our Staff' }); -%>
+  <div class='card card-users m-4' style='max-width: 600px; margin: 0 auto;'>
+    <h2 class='card-header'>Add user</h2>
+    <div class='card-body'>
+      <form class='userForm' action='/users-success' method='post'>
+        <fieldset name='userFields' class='d-flex flex-wrap justify-content-center'>
+          <%- include('../partials/form-input.ejs', {
+                        inputLabel: 'first name',
+                        inputName: 'firstnameInput',
+                        inputType: 'text'
+                    }); -%>
+          <%- include('../partials/form-input.ejs', {
+                        inputLabel: 'last name',
+                        inputName: 'lastnameInput',
+                        inputType: 'text'
+                    }); -%>
+          <%- include('../partials/form-input.ejs', {
+                        inputLabel: 'email',
+                        inputName: 'emailInput',
+                        inputType: 'email'
+                    }); -%>
+          <%- include('../partials/form-input.ejs', {
+                        inputLabel: 'password',
+                        inputName: 'passwordInput',
+                        inputType: 'password'
+                    }); -%>
+        </fieldset>
+        <div class='d-flex flex-wrap justify-content-center w-100 m-3'>
+          <div class='button-cnt d-flex justify-content-center w-100'>
+            <button class='btn btn-dark col-2' id='submitBtn' type='submit'>Submit</button>
+          </div>
+          <small class='form-message form-text text-muted w-100 text-center'></small>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class='container-fluid d-flex flex-wrap justify-content-center'>
+    <% for (const user of users) { %>
+    <div class='card overflow-hidden m-3' style='width: 22rem'>
+      <%- include('../partials/profile.ejs', {
+                    firstname: user.firstname, 
+                    lastname: user.lastname, 
+                    email: user.email, 
+                    id: user.id }); -%>
+      <%- include('../partials/button-profile.ejs', {id: user.id}); %>
+    </div>
+    <% } %>
+  </div>
+  <%- include('../partials/footer.ejs'); %>
+  </div>
+  <%- include('../partials/scripts-forms.ejs') %>
+  <%- include('../partials/scripts-userform.ejs') %>
+</body>
+
+</html>

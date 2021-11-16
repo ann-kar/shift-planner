@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <%- include('../partials/head.ejs', {pageTitle: 'Shift Planner: User'}); -%>
+  <style>
+    .user-container {
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <%- include('../partials/menu.ejs', {header: 'User Profile'}); -%>
+  <div class='user-container d-flex justify-content-center m-5'>
+  <div class='card overflow-hidden w-50'>
+    <%- include('../partials/profile.ejs', {
+            firstname: userData.firstname,
+            lastname: userData.lastname,
+            email: userData.email,
+            id: userData.id,
+        }); -%>
+    <%- include('../partials/button-shifts.ejs', {id: userData.id}); %>
+  </div>
+</div>
+</body>
+</html>

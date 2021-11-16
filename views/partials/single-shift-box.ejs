@@ -1,0 +1,35 @@
+<% let start_num = parseInt(start_at.replace(':', '')) %>
+<% let end_num = parseInt(end_at.replace(':', '')) %>
+<% let top = (start_num - 900) / 100 * 3; %>
+<% let height = (end_num - start_num) / 100 * 3; %>
+
+<% const colors = {
+    red: '#FF9AA2',
+    orange: '#FFDAC1',
+    yellow: '#fcf5c7',
+    green: '#d6eadf',
+    blue: '#95b8d1',
+    gray: '#e2e2e2',
+    navy: '#809bce',
+    pink: '#fce1e4',
+    violet: '#e8dff5',
+    brown: '#d3ab9e'
+} %>
+
+<div class='single-shift-box' 
+  style="position: absolute;
+    z-index: 6;
+    width: 100%;
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+    text-decoration: none;
+    overflow: hidden;
+    padding: 0;
+    left: 0; 
+    top: <%- top %>rem; 
+    height: <%- height %>rem; 
+    background-color: <%- Object.values(colors)[parseInt(String(user_id).slice(-1))] %>;">
+  <a class='f-sm link-dark' href='/users/<%- user_id %>'>
+    <%-firstname + ' ' + lastname%>
+  </a>
+</div>

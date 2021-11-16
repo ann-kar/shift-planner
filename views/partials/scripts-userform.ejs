@@ -1,0 +1,33 @@
+<script>
+  const userForm = document.querySelector('.userForm');
+  const inputs = userForm.elements.userFields.elements;
+
+  for (const input of inputs) {
+    input.addEventListener('blur', (e) => {
+      const filled = isFilled(e.target);
+      toggleError(e.target, 'This field is required', filled);
+    });
+  };
+
+  inputs.emailInput.addEventListener('blur', function() {
+    const correct = validateEmail(this.value.trim());
+    toggleError(this, 'Please provide a correct email.', correct);
+  });
+
+  inputs.passwordInput.addEventListener('blur', function() {
+    const isCorrect = validatePassword(this.value.trim());
+    toggleError(this, 'The password should be at least 10 characters long.', isCorrect);
+  })
+
+  userForm.addEventListener('submit', (e) => {
+    let errors = false;
+    for (const input of inputs) {
+      !isFilled(input) ? errors = true : null;
+    }!validateEmail(inputs.emailInput.value.trim()) ? errors = true : null;
+    !validatePassword(inputs.passwordInput.value.trim()) ? errors = true : null;
+    if (errors) {
+      e.preventDefault()
+      e.target.querySelector('.form-message').innerText = 'Please fill correctly all the fields.'
+    }
+  });
+</script>

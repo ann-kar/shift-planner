@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <%- include('../partials/head.ejs', {pageTitle: 'Weekly Schedule' }); -%>
+</head>
+
+<body>
+  <div class='main'>
+    <% let j = 0;%>
+    <%- include('../partials/menu.ejs', {header: 'Weekly Schedule' }); %>
+    <div class='calendar'>
+      <div class='calendar-col'>
+        <%- include('../partials/weekday-short.ejs', { day: 0 }); %>
+        <div class='calendar-col-bar'>
+          <% for (let i = 0; i < 12; i++) { %>
+            <div 
+            class='calendar-time-lines' 
+            style='height: 3rem; 
+              border-top: 1px dotted #a8a8a8;
+              top: <%- 3 * i %>rem;'>
+                <%- i + 9 %>:00
+            </div>
+          <% } %>
+        </div>
+      </div>
+      <% for (let i = 0; i < 7; i++) { %>
+        <div class='calendar-col'>
+        <%- include('../partials/weekday-short.ejs', { day: i + 1 }); %>
+        <div 
+          class='calendar-bar' 
+          style='position: relative; 
+            height: 36rem; 
+            width: 8vw; 
+            border: 1px solid #000;
+            margin: 0.5rem;'>
+          <% for (let i = 0; i < 12; i++) { %>
+            <div 
+              class='calendar-bar-box'
+              style='height: 3rem; 
+                width: 100%; 
+                border-bottom: 1px dotted #a8a8a8;'>
+            </div>
+          <% } %>
+          <% while ((typeof schedules[j] !== 'undefined') && (parseInt(schedules[j].day) == i + 1)) { %>
+              <% if (Object.values(schedules[j]).every(el => el !== null)) { %>
+                  <%- include('../partials/single-shift-box.ejs', {
+                      start_at: schedules[j].start_at,
+                      end_at: schedules[j].end_at,
+                      firstname: schedules[j].firstname,
+                      lastname: schedules[j].lastname,
+                      user_id: schedules[j].user_id 
+                  }); %>
+              <% } %>
+          <% j++ %>
+          <% } %>
+        </div>
+      </div>
+      <% } %>
+    </div>
+    <%- include('../partials/footer.ejs'); %>
+  </div>
+</body>
+
+</html>
