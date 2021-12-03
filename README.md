@@ -8,7 +8,7 @@ An Express.js app for employee shift scheduling at a small business (like a coff
 
 ## Motivation
 
-The project was an assignment during the web development course organized by INCO Academy. The tutors provided main guidelines and a list of required features, but the design, the logic, and the final product was up to the student. Main focus: building endpoints in server-side applications, GET / POST requests, fetching data from a database.
+The project was an assignment during the web development course organized by INCO Academy. The tutors provided main guidelines and a list of required features, but the design, the logic, and the final product was up to the student. Main focus: building endpoints in server-side applications, GET / POST requests, fetching data from a database. Original commit history deleted when transfering to protect data (db connection).
 
 ## Pages:
 
