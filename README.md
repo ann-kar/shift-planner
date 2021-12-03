@@ -1,14 +1,23 @@
-## Shift Planner
+# Shift Planner
 
-**PURPOSE:** A coffeeshop employee scheduling app.
+An Express.js app for employee shift scheduling at a small business (like a coffeshop or a store).
 
-**TECHNOLOGIES:** Node.js (Express.js), EJS templates, Bootstrap, PostgreSQL.
+## Built with:
 
-# Main features:
+**Express.js / EJS templates / Bootstrap / PostgreSQL / ESLint**
+
+## Motivation
+
+The project was an assignment during the web development course organized by INCO Academy. The tutors provided main guidelines and a list of required features, but the design, the logic, and the final product was up to the student. Main focus: building endpoints in server-side applications, GET / POST requests, fetching data from a database.
+
+## Pages:
 
 ### HOME:
 1.	Fetch data from the database and display the weekly shifts of all employees on a calendar.
 2.	Usernames are links pointing to individual user profiles.
+
+**Screenshot:**
+[![shift-planner.png](https://i.postimg.cc/ZnM1HNCj/shift-planner.png)](https://postimg.cc/CnbPLzCf)
 
 ### USERS: 
 1.	“Add new user” feature. JS form with front-end & back-end validation checking against:
@@ -29,7 +38,7 @@
 - shifts outside the coffeeshop’s opening hours
 2.	A list of all schedules in table form.
 
-# To do next:
+# Planned updates:
 1.	Hashing function for the passwords.
 2.	Authorization: user registration & login.
 3.	Deployment on heroku with the database.
